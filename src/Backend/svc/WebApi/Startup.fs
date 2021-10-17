@@ -11,8 +11,15 @@ open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
+open Microsoft.OpenApi.Models
 
 type Startup(configuration: IConfiguration) =
+    [<Literal>]
+    let APITitle = "Poly-SaaS Tenants Web API"
+
+    [<Literal>]
+    let APIVersion = "v1"
+
     member _.Configuration = configuration
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -20,12 +27,25 @@ type Startup(configuration: IConfiguration) =
         // Add framework services.
         services.AddControllers() |> ignore
 
+        services.AddSwaggerGen(fun c ->
+            let info = OpenApiInfo()
+            info.Title <- APITitle
+            info.Version <- APIVersion
+            c.SwaggerDoc(APIVersion, info)
+        ) |> ignore
+
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     member _.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =
         if (env.IsDevelopment()) then
             app.UseDeveloperExceptionPage() |> ignore
-        app.UseHttpsRedirection()
-           .UseRouting()
+
+        app.UseSwagger()
+           .UseSwaggerUI(fun c ->
+                c.SwaggerEndpoint($"/swagger/{APIVersion}/swagger.json", APITitle)
+                c.RoutePrefix <- ""
+           ) |> ignore
+
+        app.UseRouting()
            .UseAuthorization()
            .UseEndpoints(fun endpoints ->
                 endpoints.MapControllers() |> ignore
