@@ -3,13 +3,23 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="WeatherForecast.fs"/>
-    <Compile Include="Controllers/WeatherForecastController.fs"/>
-    <Compile Include="Startup.fs"/>
-    <Compile Include="Program.fs"/>
+    <Compile Include="TenantAccounts/TenantAccountsModels.fs" />
+    <Compile Include="TenantAccounts/TenantAccountsController.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3"/>
+    <PackageReference Update="FSharp.Core" Version="5.0.2" />
+    <PackageReference Include="PolyCoder.Preamble" Version="0.0.15" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\Preamble\Preamble.fsproj" />
+    <ProjectReference Include="..\..\shared\Domains.Shared\Domains.Shared.fsproj" />
+    <ProjectReference Include="..\..\shared\Services.Shared\Services.Shared.fsproj" />
+    <ProjectReference Include="..\..\shared\WebApi.Shared\WebApi.Shared.fsproj" />
+    <ProjectReference Include="..\..\libs\Domain\Domain.fsproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,1 @@
+tye run --watch --dashboard
