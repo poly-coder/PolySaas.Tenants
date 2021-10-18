@@ -3,8 +3,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TenantAccounts/TenantAccountsModels.fs" />
-    <Compile Include="TenantAccounts/TenantAccountsController.fs" />
+    <Compile Include="TenantAccounts/Models.fs" />
+    <Compile Include="TenantAccounts/Mappers.fs" />
+    <Compile Include="TenantAccounts/Controller.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
@@ -21,5 +22,6 @@
     <ProjectReference Include="..\..\shared\Services.Shared\Services.Shared.fsproj" />
     <ProjectReference Include="..\..\shared\WebApi.Shared\WebApi.Shared.fsproj" />
     <ProjectReference Include="..\..\libs\Domain\Domain.fsproj" />
+    <ProjectReference Include="..\..\libs\Services\Services.fsproj" />
   </ItemGroup>
 </Project>

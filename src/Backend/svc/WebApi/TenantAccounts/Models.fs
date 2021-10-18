@@ -15,13 +15,14 @@ type TenantAccountSummaryModel = {
 }
 
 [<CLIMutable>]
-type GetTenantAccountsListQuery = {
-    name: string
+type GetTenantAccountListQuery = {
+    continuationToken: string
+    displayName: string
     identifier: string
 }
 
 [<CLIMutable>]
-type GetTenantAccountsListResponseBody = {
+type GetTenantAccountListResponseBody = {
     continuationToken: string
     tenantAccounts: TenantAccountItemModel array
 }

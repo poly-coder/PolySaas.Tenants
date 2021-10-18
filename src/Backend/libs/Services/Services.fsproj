@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ApiResponse.fs" />
+    <Compile Include="TenantAccounts/Models.fs" />
+    <Compile Include="TenantAccounts/Service.fs" />
+    <Compile Include="TenantAccounts/InMemory.fs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Services.Shared\Services.Shared.fsproj" />
+    <ProjectReference Include="..\..\shared\Services.Shared\Services.Shared.fsproj" />
+    <ProjectReference Include="..\..\shared\Preamble\Preamble.fsproj" />
+    <ProjectReference Include="..\Domain\Domain.fsproj" />
   </ItemGroup>
 
 </Project>
